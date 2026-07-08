@@ -1,0 +1,7 @@
+# Raw third-party data is not redistributed — regenerate per README
+*.csv
+*.xlsx
+*.parquet
+__pycache__/
+*.pyc
+.DS_Store
