@@ -1,0 +1,57 @@
+{
+  "game_level_wilson95": {
+    "all_422": [0.5639810426540285, 0.5163016268385368, 0.6105061296198062],
+    "final_margin_lt6_100": [0.5, 0.4038315303659956, 0.5961684696340044],
+    "game7_16": [0.5, 0.27999563610326017, 0.7200043638967398]
+  },
+  "promotion_blockers": [
+    "Original raw Mirage files of record were not found in Drive/File Library/GitHub during the 2026-08-26 audit.",
+    "Shooter tiers use same-window RS shooting to define extremes, creating regression-to-the-mean risk.",
+    "Primary close-game tables condition on final margin, a post-outcome/collider variable.",
+    "Shot-level inference must cluster/hierarchically model repeated shooters rather than treat attempts as independent.",
+    "Game 5+ is not equivalent to elimination pressure; series state must be reconstructed explicitly.",
+    "The $430M payroll extrapolation and specialist-teardown claim are outside the validated empirical spine."
+  ],
+  "published_wide_open": {
+    "naive_independent_shot_difference_in_differences": {
+      "ci95": [0.04906749903813708, 0.12893250096186298],
+      "gap_reduction": 0.08900000000000002,
+      "p_two_sided": 1.2517642076215196e-05,
+      "se": 0.02037372498054232,
+      "warning": "Shots are clustered within players/teams and tiers were defined using RS performance; this is a descriptive audit, not the final inferential test.",
+      "z": 4.368371521898838
+    },
+    "playoff_elite_minus_subavg": {
+      "ci95": [-0.021742921555598635, 0.055742921555598665],
+      "diff": 0.017000000000000015,
+      "p_two_sided": 0.38977357021646064,
+      "se": 0.019766796712040128,
+      "z": 0.8600280686675533
+    },
+    "rs_elite_minus_subavg": {
+      "ci95": [0.09632577329157964, 0.11567422670842044],
+      "diff": 0.10600000000000004,
+      "p_two_sided": 0.0,
+      "se": 0.0049358299532757145,
+      "z": 21.475618285766114
+    }
+  },
+  "status": "AGGREGATE_AUDIT_ONLY_NOT_RAW_REPRODUCTION",
+  "structural_diagnostic": {
+    "final_margin_collider_simulation": {
+      "all_win_rate_A": 0.5800933333333333,
+      "assumptions": {"A_3p": 0.39, "B_3p": 0.36, "other_score_diff_sd": 10.0, "three_attempts_each": 35},
+      "close_n": 87451,
+      "final_margin_lt6_win_rate_A": 0.5190106459617386,
+      "sim_n": 300000
+    },
+    "regression_to_mean_simulation": {
+      "apparent_gap_compression": 0.4281308663911224,
+      "assumptions": {"no_true_playoff_compression": true, "playoff_attempt_range": [10, 80], "rs_attempt_range": [100, 500], "true_skill_mean": 0.37, "true_skill_sd": 0.035},
+      "mean_remeasured_playoff_gap": 0.06213069232430486,
+      "mean_selected_rs_gap": 0.1086449480709311,
+      "reps": 800
+    },
+    "warning": "Conditioning on final margin selects on an outcome affected by shooting. A real shooting advantage can look much smaller inside the post-outcome close-game subset."
+  }
+}
