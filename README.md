@@ -13,6 +13,18 @@ Reproducible out-of-sample (OOS) validation of the DataDunkNBA metric stack. Eve
 
 Full grading in `docs/Framework_Validity_Ledger_2026-07-04.md`.
 
+## SSAC27 research lanes
+
+The conference work is kept claim-level and fail-closed. A provocative Substack result is not automatically a submission result.
+
+| Lane | Current status | Public path |
+|---|---|---|
+| **PASV** | Submitted; maintained in the dedicated PASV repository | `GrobeStreet/pasv` |
+| **The Wall Travels / rim-suppression portability** | v1 reproduced; v2 robustness specification + harness frozen; **HOLD** until the v2 receipt is generated | `ssac27/wall-travels/` |
+| **The Shooter's Mirage / playoff 3P translation** | Historical aggregate result audited; original raw `/tmp/` files not recovered; **BLOCKED / RETEST REQUIRED** under prior-only skill and no-final-margin-conditioning design | `ssac27/shooters-mirage/` |
+
+For Wall Travels, the current reproduced result is moderate positive year-to-year rim-suppression persistence, including positive raw persistence among team changers. Movement is observational, not causal identification. For Shooter's Mirage, the published 10.6-point regular-season wide-open elite/sub-average gap and 1.7-point playoff gap remain documented exploratory evidence; the new lane explicitly tests regression-to-the-mean and post-outcome selection risks before any Sloan promotion.
+
 ## Layout
 
 ```
@@ -25,6 +37,7 @@ code/   validation scripts (stdlib + numpy only)
   rqs_oos.py                  RQS: held-out champions 2024-2026 top-5 test (+ 2023 control)
   rqs_2026_detail.py          RQS: 2026 full ranking + NYK component breakdown
 docs/   validation write-ups + the Framework Validity Ledger
+ssac27/ conference research lanes with frozen specs, code, and machine-readable receipts
 ```
 
 ## Data sources (not committed — regenerate)
@@ -44,4 +57,4 @@ Champion labels are external (NBA Finals results). Champion correlation targets 
 - **RQS** = `AQI1×4 + AQI2×2 + interior_anchor×3 + late_draft_elite×1`.
 - **Honest limits** are stated in each doc: modest predictors (r²≈0.10), small held-out champion counts, and team-context effects. These are filters and descriptors, not oracles.
 
-*Generated 2026-07-04. Companion to the SSAC27 PASV and NPSS papers (separate repo).*
+*Original Phase 1 generated 2026-07-04; SSAC27 lane status updated 2026-08-26.*
