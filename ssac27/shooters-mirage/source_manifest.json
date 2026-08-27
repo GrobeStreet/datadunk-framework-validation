@@ -1,0 +1,32 @@
+{
+  "status": "DOCUMENTED_NOT_RAW_REPRODUCED",
+  "audit_date": "2026-08-26",
+  "historical_text_sources": [
+    {
+      "name": "Research_The_Variance_Trap_3PT_Investigation_2026-06-17.md",
+      "google_drive_file_id": "1tplLP7h4pa2gjsptxu9OIpHL-g9UdUQl",
+      "sha256": "3fc9e8e4110dcf5a896a0ff990c6b0756d9f25a3dbcadaece8f93bc31bb28428",
+      "role": "primary exploratory research record"
+    },
+    {
+      "name": "Research_The_Variance_Trap_FULL_2026-06-17.md",
+      "google_drive_file_id": "1TUy3E5ycdzQwRLqOzVOzbt48Vg1qJhXQ",
+      "sha256": "a02090def652a8971f0e9f277daac89bfe8617256dc99d218ebece9f610804f2",
+      "role": "full exploratory synthesis"
+    },
+    {
+      "name": "Article_The_Shooters_Mirage_2026-06-17.md",
+      "google_drive_file_id": "1DH-cLHZnET7LOZjjs5rpuC4Y0R9NpYkD",
+      "sha256": "1481d89416a9ac7073c2dd7d2d4522362f566b5692ad020b94eb22ed51723a35",
+      "role": "published-article mirror"
+    }
+  ],
+  "historical_raw_files_named_in_research_record": [
+    {"path_as_recorded": "/tmp/league_3pt_by_defender_dist.csv", "recovery_status": "NOT_FOUND_IN_2026-08-26_AUDIT"},
+    {"path_as_recorded": "/tmp/po_5seasons.csv", "recovery_status": "NOT_FOUND_IN_2026-08-26_AUDIT"},
+    {"path_as_recorded": "/tmp/rs_team_5seasons.csv", "recovery_status": "NOT_FOUND_IN_2026-08-26_AUDIT"},
+    {"path_as_recorded": "/tmp/playoff_games_5seasons_with_3pt.csv", "recovery_status": "NOT_FOUND_IN_2026-08-26_AUDIT"}
+  ],
+  "audit_search_scope": ["Google Drive", "ChatGPT File Library", "GrobeStreet GitHub repositories"],
+  "claim_boundary": "Published aggregate counts can be arithmetically audited, but the June 2026 analysis is not a raw-data reproduction. A new Sloan result must use regenerated, hashed source snapshots under the frozen hardening specification."
+}
