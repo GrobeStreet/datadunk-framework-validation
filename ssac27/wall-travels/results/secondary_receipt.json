@@ -1,0 +1,37 @@
+{
+  "curated_matchup_range_restriction": {
+    "defenders": 14,
+    "empirical_p_upper": 0.6511174441277936,
+    "interpretation": "Curated 14-defender subset; null spread confirms range restriction. This is an independent rerun of the historical label-shuffle test, not the full 107-defender population test.",
+    "matchup_fga": 2887.0,
+    "matchup_rows": 317,
+    "null_mean": 0.03255692327970885,
+    "null_sd": 0.006893169803122387,
+    "observed_sd": 0.029558250925483337,
+    "permutations": 20000,
+    "seed": 20260826,
+    "z": -0.43502081623859135
+  },
+  "sources": {
+    "deterrence_team.csv": {"sha256": "289da2b7a4061cd1e2902a1eabc59472f9c01d44e2c7c5f3cd6c6409eac6a1f5"},
+    "matchup_grades.csv": {"sha256": "403e34c0b3fb7c0e734bf66ad5f8ed0a4f29b9df5bb85fb3fa058cd10e12e5ec"},
+    "micro_macro_bridge.csv": {"sha256": "4fbc0a8dffc748da1cff17d3127764ded4cd6446f60280360c3e36ca31b817ad"}
+  },
+  "status": "REPRODUCED_FROM_FROZEN_DERIVED_INPUTS",
+  "team_bridge_2024_25": {
+    "claim_boundary": "One-season cross-sectional association; not causal identification.",
+    "leave_one_team_out_r_max": -0.35411731722936646,
+    "leave_one_team_out_r_min": -0.5147657060950916,
+    "n": 30,
+    "pearson_r_team_rim_supp_vs_opp_ppp": -0.44988806698805855,
+    "permutation_p_two_sided": 0.013349332533373332
+  },
+  "team_deterrence_2024_25": {
+    "claim_boundary": "Team-level shot-frequency null; does not rule out player-level or scheme-conditional deterrence.",
+    "leave_one_team_out_r_max": 0.08407074444953151,
+    "leave_one_team_out_r_min": -0.10717334630012929,
+    "n": 30,
+    "pearson_r_team_sup_vs_rim_attempt_rate": 0.010850525395371015,
+    "permutation_p_two_sided": 0.9530023498825059
+  }
+}
