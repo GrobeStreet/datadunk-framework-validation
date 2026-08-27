@@ -1,0 +1,29 @@
+{
+  "source": "NBA.com LeagueDashPtDefend",
+  "defense_category": "Less Than 6Ft",
+  "season_type": "Regular Season",
+  "per_mode": "PerGame",
+  "frozen_raw_parquet": {
+    "2023-24": {"rows": 562, "sha256": "888895182e6087cb8bf82218efa805d44ba615070f18b337daa41f23f9a5faac"},
+    "2024-25": {"rows": 562, "sha256": "a0a874167c3ab0823483d2972c29c9bd9c3e7c6353bf4b19479d2c5347f2b018"},
+    "2025-26": {"rows": 578, "sha256": "704e91ffbe1c7a0fa1ac38d8c82df43b51837a549f22c84de073426f409e9c1c"}
+  },
+  "canonical_csv_exports": {
+    "2023-24": {"sha256": "b32ea67b4f1be87de963198226f2bab177a390d7eacae36a3a4f6f24799a3209"},
+    "2024-25": {"sha256": "bc480b1e1295f6d44ba269054273e946d1655c33c4e0f3f0ce4a91ec51af59aa"},
+    "2025-26": {"sha256": "f9012a54fa317a35fbb0192615499ce6c198c6f77110402ff92155f565c798db"}
+  },
+  "columns_used": [
+    "CLOSE_DEF_PERSON_ID",
+    "PLAYER_LAST_TEAM_ABBREVIATION",
+    "GP",
+    "FGA_LT_06",
+    "PLUSMINUS"
+  ],
+  "notes": [
+    "FGA_LT_06 is stored in per-game units; total defended rim attempts are FGA_LT_06 * GP.",
+    "The 100-attempt signal threshold is documented in the July research record.",
+    "The 80-attempt persistence threshold was reconstructed because it exactly regenerates the frozen July adjacent-season n/r values and mover/stayer split; it is not claimed as independently preregistered.",
+    "Raw third-party NBA.com data are not redistributed in this repository; reproduce.py --fetch attempts to regenerate public-source CSVs."
+  ]
+}
