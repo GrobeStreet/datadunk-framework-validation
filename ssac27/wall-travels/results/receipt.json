@@ -1,0 +1,25 @@
+{
+  "claim_boundary": "Associational player persistence; movement is not randomized causal identification.",
+  "movement_2024-25_to_2025-26": {
+    "mover_minus_stayer_r_bootstrap95": [-0.31607654859894285, 0.07751340480884195],
+    "movers": {"bootstrap95": [0.16526089071665165, 0.47954311770170327], "n": 111, "r": 0.33681388124730816},
+    "stayers": {"bootstrap95": [0.32596823122282154, 0.5593064011602374], "n": 218, "r": 0.44991012229859334}
+  },
+  "persistence": {
+    "2023-24_to_2024-25": {"n": 324, "r": 0.4227357527368291},
+    "2023-24_to_2025-26": {"n": 340, "r": 0.27225343169288513},
+    "2024-25_to_2025-26": {"n": 329, "r": 0.40008308120743663}
+  },
+  "signal": {
+    "2023-24": {"n": 492, "observed_sd": 0.0697990657216346, "reliability_floor": 0.9583685446692142, "top3_mass": 0.059880239520958084, "true_signal_sd_floor": 0.06833070239460666},
+    "2024-25": {"n": 334, "observed_sd": 0.04929925173479647, "reliability_floor": 0.5004505914504673, "top3_mass": 0.04856939211892883, "true_signal_sd_floor": 0.034875539215558395},
+    "2025-26": {"n": 509, "observed_sd": 0.06502995606539337, "reliability_floor": 0.960796493894512, "top3_mass": 0.04658305605323778, "true_signal_sd_floor": 0.06374251067873297}
+  },
+  "source_csv_sha256": {
+    "2023-24": "b32ea67b4f1be87de963198226f2bab177a390d7eacae36a3a4f6f24799a3209",
+    "2024-25": "bc480b1e1295f6d44ba269054273e946d1655c33c4e0f3f0ce4a91ec51af59aa",
+    "2025-26": "f9012a54fa317a35fbb0192615499ce6c198c6f77110402ff92155f565c798db"
+  },
+  "status": "REPRODUCED",
+  "thresholds": {"persistence_total_rim_fga_each_season": 80, "signal_total_rim_fga": 100}
+}
