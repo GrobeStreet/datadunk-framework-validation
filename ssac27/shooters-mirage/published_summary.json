@@ -1,0 +1,12 @@
+{
+  "source": "Research_The_Variance_Trap_3PT_Investigation_2026-06-17.md",
+  "wide_open": {
+    "regular_season": {"elite_pct": 0.453, "elite_n": 16000, "subavg_pct": 0.347, "subavg_n": 25530},
+    "playoffs": {"elite_pct": 0.400, "elite_n": 1396, "subavg_pct": 0.383, "subavg_n": 1080}
+  },
+  "game_level": {
+    "all_games": {"higher_rs3p_wins": 238, "n": 422},
+    "close_lt6": {"higher_rs3p_wins": 50, "n": 100},
+    "game7": {"higher_rs3p_wins": 8, "n": 16}
+  }
+}
