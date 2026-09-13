@@ -8,10 +8,10 @@ Reproducible out-of-sample (OOS) validation of the DataDunkNBA metric stack. Eve
 |---|---|---|
 | **AQI** | Rebuilt on real NBA.com on-court NET_RATING (vs BPM proxy); champion correlation | ✅ r=+0.365 (802 team-seasons), robust 0.356–0.370, **beats BPM proxy (0.266)**. Floor recalibrated to 1.73. |
 | **WEV_v3 / CPV** | Temporal hold-out: fit 2000–2015, test 2016–2023 | ✅ Generalizes (WEV_v3 r 0.354→0.320; CPV 0.327→0.348); **beats raw NetRtg/SRS/W%**; DEV≈0.58 weight independently re-derived. Top-5 filter, not a picker. |
-| **RQS** | OOS test on held-out champions 2024–2026 | ❌ "100% top-5" **FALSIFIED** — 2026 NYK finished #8; caught 2/3. Demoted to descriptive index. |
-| **EffTax** | Historical widening (745 team-seasons) | ❌ Multiplier **FAILED OOS** (r≈0.003 vs the one-season r=−0.639). Retired. |
+| **RQS** | OOS test on held-out champions 2024–2026 | ⚠️ "100% top-5" **FALSIFIED** — 2026 NYK finished #8; caught 2/3. The *claim* is dead; the *framework* stays as a descriptive index (Sept 12 preseason-record test: `v6_sprint_2026-09/`). |
+| **EffTax** | Historical widening (745 team-seasons) → Sept 12 rerun on its own terms | ⚠️→✅ The *multiplier* **FAILED OOS** (r≈0.003). **Restored Sept 12, 2026 as an availability mechanism:** payroll concentrated in low-availability players correlates −0.39 with win%, 16/16 seasons (`v6_sprint_2026-09/efftax_results.md`). Frameworks live, claims die. |
 
-Full grading in `docs/Framework_Validity_Ledger_2026-07-04.md`.
+Full grading in `docs/Framework_Validity_Ledger_2026-07-04.md`. **Sept 2026 status (Master Bible v6):** doctrine changed from "kill failed metrics" to "frameworks live, claims die" — a framework is retired only for failing on its own terms, never for failing a rule it was not built to be. Sprint receipts in `v6_sprint_2026-09/SPRINT_RESULTS_2026-09-12.md`. Live canon: https://datadunknba-master-bible.netlify.app
 
 ## SSAC27 research lanes
 
@@ -38,6 +38,7 @@ code/   validation scripts (stdlib + numpy only)
   rqs_2026_detail.py          RQS: 2026 full ranking + NYK component breakdown
 docs/   validation write-ups + the Framework Validity Ledger
 ssac27/ conference research lanes with frozen specs, code, and machine-readable receipts
+v6_sprint_2026-09/  Sept 12, 2026 sprint: CEV forecast-safe test, RQS preseason-record model, EffTax on its own terms (scripts + results)
 ```
 
 ## Data sources (not committed — regenerate)
@@ -57,4 +58,4 @@ Champion labels are external (NBA Finals results). Champion correlation targets 
 - **RQS** = `AQI1×4 + AQI2×2 + interior_anchor×3 + late_draft_elite×1`.
 - **Honest limits** are stated in each doc: modest predictors (r²≈0.10), small held-out champion counts, and team-context effects. These are filters and descriptors, not oracles.
 
-*Original Phase 1 generated 2026-07-04; SSAC27 lane status updated 2026-08-26.*
+*Original Phase 1 generated 2026-07-04; SSAC27 lane status updated 2026-08-26; Master Bible v6 status and Sept 12 sprint receipts added 2026-09-13.*
