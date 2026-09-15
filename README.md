@@ -1,61 +1,78 @@
-# DataDunkNBA — Framework Validation (Phase 1, July 2026)
+# DataDunkNBA — Framework Validation
 
-Reproducible out-of-sample (OOS) validation of the DataDunkNBA metric stack. Every claim here is graded on a strict OOS standard: a metric counts only if it predicts on data it was **not** built on. Several metrics were downgraded or retired in this pass — that is the point.
+Reproducible out-of-sample validation of the DataDunkNBA metric stack. Every claim is graded at the level of the exact rule, target, formula, or predictive use being tested. **Frameworks live; claims die.** A failed title rule does not automatically erase a useful descriptor or mechanism.
 
 ## Headline results
 
 | Metric | Test | Verdict |
 |---|---|---|
-| **AQI** | Rebuilt on real NBA.com on-court NET_RATING (vs BPM proxy); champion correlation | ✅ r=+0.365 (802 team-seasons), robust 0.356–0.370, **beats BPM proxy (0.266)**. Floor recalibrated to 1.73. |
-| **WEV_v3 / CPV** | Temporal hold-out: fit 2000–2015, test 2016–2023 | ✅ Generalizes (WEV_v3 r 0.354→0.320; CPV 0.327→0.348); **beats raw NetRtg/SRS/W%**; DEV≈0.58 weight independently re-derived. Top-5 filter, not a picker. |
-| **RQS** | OOS test on held-out champions 2024–2026 | ⚠️ "100% top-5" **FALSIFIED** — 2026 NYK finished #8; caught 2/3. The *claim* is dead; the *framework* stays as a descriptive index (Sept 12 preseason-record test: `v6_sprint_2026-09/`). |
-| **EffTax** | Historical widening (745 team-seasons) → Sept 12 rerun on its own terms | ⚠️→✅ The *multiplier* **FAILED OOS** (r≈0.003). **Restored Sept 12, 2026 as an availability mechanism:** payroll concentrated in low-availability players correlates −0.39 with win%, 16/16 seasons (`v6_sprint_2026-09/efftax_results.md`). Frameworks live, claims die. |
+| **AQI** | Rebuilt on real NBA.com on-court NET_RATING; champion correlation | ✅ r=+0.365 (802 team-seasons), robust 0.356–0.370; floor recalibrated to 1.73. |
+| **WEV_v3 / CPV** | Temporal hold-out: fit 2000–2015, test 2016–2023 | ✅ Generalizes (WEV_v3 r 0.354→0.320; CPV 0.327→0.348); DEV≈0.58 weight independently re-derived. Team-quality filters, not oracles. |
+| **RQS** | Held-out title rule + Sept. 12 preseason-record test | ⚠️ Universal top-5 title rule **falsified**; same-season descriptor survives. Naive prior RQS OOS R² 0.346 vs prior NetRtg 0.388; NetRtg+RQS adds only +0.004. |
+| **Efficiency Tax** | Sept. 12 salary concentration × availability reconstruction, 2011–2026 | ✅ Construct restored as an **availability mechanism**: concentrated-dollar fragility r≈−0.394 with win%, negative in 16/16 seasons. The old multiplier remains non-canonical as a production form. |
+| **CEV / team clutch** | Forecast-safe close-game outcome test | ❌ Team-trait version fails: weak title association, low year-to-year persistence, and essentially no forecast lift beyond prior NetRtg. Player-process clutch remains open. |
 
-Full grading in `docs/Framework_Validity_Ledger_2026-07-04.md`. **Sept 2026 status (Master Bible v6):** doctrine changed from "kill failed metrics" to "frameworks live, claims die" — a framework is retired only for failing on its own terms, never for failing a rule it was not built to be. Sprint receipts in `v6_sprint_2026-09/SPRINT_RESULTS_2026-09-12.md`. Live canon: https://datadunknba-master-bible.netlify.app
+Full historical grading remains in `docs/Framework_Validity_Ledger_2026-07-04.md`; September sprint results are in `v6_sprint_2026-09/SPRINT_RESULTS_2026-09-12.md`.
+
+**Release note:** the September research canon is newer than the currently verified public Bible deployment. `https://datadunknba-master-bible.netlify.app` is still the Aug. 13 v5 production deploy until a new Netlify production deploy is verified. Do not describe the live site as v6 yet.
 
 ## SSAC27 research lanes
 
-The conference work is kept claim-level and fail-closed. A provocative Substack result is not automatically a submission result.
+The conference work is fail-closed: a provocative Substack result is not automatically a submission result.
 
 | Lane | Current status | Public path |
 |---|---|---|
-| **PASV** | Submitted; maintained in the dedicated PASV repository | `GrobeStreet/pasv` |
+| **PASV** | Submitted; current v4 framing is maintained in the dedicated PASV repository | `GrobeStreet/pasv` |
 | **The Wall Travels / rim-suppression portability** | v1 reproduced; v2 robustness specification + harness frozen; **HOLD** until the v2 receipt is generated | `ssac27/wall-travels/` |
 | **The Shooter's Mirage / playoff 3P translation** | Historical aggregate result audited; original raw `/tmp/` files not recovered; **BLOCKED / RETEST REQUIRED** under prior-only skill and no-final-margin-conditioning design | `ssac27/shooters-mirage/` |
 
-For Wall Travels, the current reproduced result is moderate positive year-to-year rim-suppression persistence, including positive raw persistence among team changers. Movement is observational, not causal identification. For Shooter's Mirage, the published 10.6-point regular-season wide-open elite/sub-average gap and 1.7-point playoff gap remain documented exploratory evidence; the new lane explicitly tests regression-to-the-mean and post-outcome selection risks before any Sloan promotion.
+For Wall Travels, the reproduced result is moderate positive year-to-year rim-suppression persistence, including positive raw persistence among team changers. Movement is observational, not causal identification. For Shooter's Mirage, the published 10.6-point regular-season wide-open elite/sub-average gap and 1.7-point playoff gap remain documented exploratory evidence; the current lane explicitly tests regression-to-the-mean and post-outcome selection risks before any Sloan promotion.
 
 ## Layout
 
-```
-code/   validation scripts (stdlib + numpy only)
-  _aqi_netrating_upgrade.py   AQI: real NET_RATING vs BPM proxy, champion correlation head-to-head
-  _aqi_robust.py              AQI: robustness across minutes filters + year windows
-  _aqi_floor.py               AQI: anchor-floor recalibration on the net-rating scale
-  wev_holdout.py              WEV_v3/CPV: fit-2000-15 / test-2016-23 hold-out + weight refit
-  wev_baseline.py             WEV_v3/CPV vs raw NetRtg/SRS/W% baseline (OOS)
-  rqs_oos.py                  RQS: held-out champions 2024-2026 top-5 test (+ 2023 control)
-  rqs_2026_detail.py          RQS: 2026 full ranking + NYK component breakdown
+```text
+code/   framework validation scripts
+  _aqi_netrating_upgrade.py
+  _aqi_robust.py
+  _aqi_floor.py
+  wev_holdout.py
+  wev_baseline.py
+  rqs_oos.py
+  rqs_2026_detail.py
 docs/   validation write-ups + the Framework Validity Ledger
 ssac27/ conference research lanes with frozen specs, code, and machine-readable receipts
-v6_sprint_2026-09/  Sept 12, 2026 sprint: CEV forecast-safe test, RQS preseason-record model, EffTax on its own terms (scripts + results)
+v6_sprint_2026-09/
+  00_README_RUN_ORDER.md
+  01_cev_rs_forecast_safe.py
+  02_rqs_preseason_record_model.py
+  03_efftax_on_its_own_terms.py
+  SPRINT_RESULTS_2026-09-12.md
+  efftax_results.md
 ```
 
-## Data sources (not committed — regenerate)
+## September sprint reproducibility boundary
 
-Raw data is third-party and not redistributed here. To reproduce:
+- **RQS:** executable from the canonical team-season export. During the Sept. 15 sync, the restored script independently reproduced the reported common-panel results: n=677; prior NetRtg OOS R² 0.388; prior RQS 0.346; NetRtg+RQS 0.392; NetRtg+RQS+Floor 0.391.
+- **CEV / team clutch:** calculation script is restored, but the exact September warehouse game-level source export is not committed here. A rerun requires that frozen source.
+- **Efficiency Tax:** calculation script is restored, but the exact Sept. 12 normalized salary/availability source snapshot is not committed here. The existing result is receipt-backed, not independently self-contained from GitHub alone.
 
-- **Historical player advanced (1996–2023):** NBA.com advanced player stats → `nbacom_advanced_rs_1996_2023.csv` (cols incl. `NET_RATING`, `USG_PCT`, `TS_PCT`).
-- **Historical player advanced (BPM, 1947–2024):** Basketball-Reference → `bbref_advanced_1947_2024.csv` (cols incl. `bpm`, `usg_percent`, `ts_percent`).
-- **Team-season composites panel:** `proof_outputs/team_seasons_full.csv` (WEV_v2/v3, OEV/DEV/CEV, CPV, NetRtg, SRS, is_champion — 805 team-seasons 2000–2026).
-- **Held-out seasons 2022-23 … 2025-26:** pulled live via [`nba_api`](https://github.com/swar/nba_api) `LeagueDashPlayerStats(measure_type="Advanced")` + `DraftHistory` + `LeagueStandingsV3`. Run locally (stats.nba.com blocks some cloud hosts).
+See `v6_sprint_2026-09/00_README_RUN_ORDER.md` before calling any new run a reproduction of the September receipt.
 
-Champion labels are external (NBA Finals results). Champion correlation targets `is_champion`, which is independent of every metric input (not tautological).
+## Data sources
+
+Raw third-party data are not redistributed unless permitted. Current reproducibility therefore distinguishes between a frozen receipt and a self-contained rerun.
+
+- **Historical player advanced (1996–2023):** NBA.com advanced player stats.
+- **Historical player advanced (BPM, 1947–2024):** Basketball-Reference.
+- **Team-season composites panel:** canonical `team_seasons_full.csv` export with WEV/OEV/DEV/CEV/CPV/NetRtg/SRS/champion labels and roster-quality fields.
+- **Held-out seasons 2022-23 … 2025-26:** NBA.com pulls via `nba_api` where access is available.
+- **Efficiency Tax Sept. 12 test:** Basketball-Reference salary tables + player games, normalized to a 480 team-season panel for 2011–2026.
 
 ## Method notes
 
-- **AQI** = `net_rating × usg × (TS / 0.550)` per player-season. Team anchor = highest-AQI rotation player (GP≥40 & MPG≥20). The upgrade swaps BPM (a box-score regression *estimate*) for NBA.com on-court NET_RATING (a *measured* quantity). On-court NET_RATING carries team context; an on/off differential would isolate the individual further (future refinement).
-- **RQS** = `AQI1×4 + AQI2×2 + interior_anchor×3 + late_draft_elite×1`.
-- **Honest limits** are stated in each doc: modest predictors (r²≈0.10), small held-out champion counts, and team-context effects. These are filters and descriptors, not oracles.
+- **AQI** = `net_rating × usg × (TS / 0.550)` per player-season. Team anchor = highest-AQI rotation player subject to eligibility rules.
+- **RQS** = `AQI1×4 + AQI2×2 + interior_anchor×3 + late_draft_elite×1`; the September result limits forecast use but does not erase descriptive use.
+- **Efficiency Tax:** the September mechanism is concentrated payroll in players who miss games; concentration itself is positively associated with winning, so the old “concentration is the tax” reading is wrong.
+- **CEV / clutch:** outcome-based team clutch is not a stable trait in the Sept. 12 test; a separate player-process question remains open.
 
-*Original Phase 1 generated 2026-07-04; SSAC27 lane status updated 2026-08-26; Master Bible v6 status and Sept 12 sprint receipts added 2026-09-13.*
+*Original Phase 1 generated 2026-07-04; SSAC27 lanes added 2026-08-26; September sprint evidence added 2026-09-13; reproducibility/release-state sync updated 2026-09-15.*
